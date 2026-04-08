@@ -9,12 +9,21 @@
   --accent-hover: #6D28D9;
   --accent-soft: #EDE9FE;
   --accent-softer: #F5F3FF;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 20px 50px rgba(124, 58, 237, 0.18);
+  --accent-warm: #F59E0B;
+  --accent-warm-soft: #FEF3C7;
+  --belt-white:  #F5F4F0;
+  --belt-white-border: #D4D4D4;
+  --belt-blue:   #2563EB;
+  --belt-purple: #7C3AED;
+  --belt-black:  #18181B;
+  --belt-empty:  #EEEBE5;
+  --shadow-sm: 0 1px 3px rgba(124, 58, 237, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 12px 32px rgba(124, 58, 237, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 20px 50px rgba(124, 58, 237, 0.22);
   --radius: 16px;
   --radius-sm: 12px;
   --sidebar-w: 280px;
+  --serif: "Fraunces", ui-serif, Georgia, serif;
 }
 
 * {
@@ -30,11 +39,31 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 900px 600px at 12% 8%, rgba(124, 58, 237, 0.055), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 92% 85%, rgba(245, 158, 11, 0.05), transparent 55%),
+    radial-gradient(ellipse 700px 500px at 80% 20%, rgba(124, 58, 237, 0.03), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
 }
+
+/* Subtle grain overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.sidebar, .main, .mobile-bar { position: relative; z-index: 2; }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -121,6 +150,20 @@ ul, ol { list-style: none; }
   color: var(--accent);
   border-left-color: var(--accent);
   font-weight: 600;
+  position: relative;
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
 }
 
 .nav-item i {
@@ -236,11 +279,22 @@ ul, ol { list-style: none; }
 
 /* ========== Typography ========== */
 h1 {
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 50, "opsz" 96;
+  font-size: clamp(36px, 4.6vw, 52px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
   color: var(--text);
+}
+
+h1 mark {
+  background: linear-gradient(120deg, transparent 2%, rgba(245, 158, 11, 0.38) 12%, rgba(245, 158, 11, 0.38) 88%, transparent 98%);
+  background-size: 100% 42%;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+  color: inherit;
+  padding: 0 3px;
 }
 
 h2 {
@@ -268,16 +322,28 @@ p strong { color: var(--text); font-weight: 600; }
 .center { text-align: center; }
 
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 12px;
   font-weight: 700;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: var(--accent-soft);
-  padding: 6px 12px;
+  background: linear-gradient(135deg, #F7F5FF, #EDE9FE);
+  padding: 7px 14px 7px 12px;
+  border: 1px solid rgba(124, 58, 237, 0.15);
   border-radius: 999px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
 }
 
 .section-title {
@@ -295,6 +361,34 @@ p strong { color: var(--text); font-weight: 600; }
 /* ========== Home hero ========== */
 .home-hero {
   text-align: left;
+  position: relative;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.18), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(245, 158, 11, 0.14), transparent 65%);
+  filter: blur(50px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.hero-ornament {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .hero-ornament { width: 56px; height: 56px; top: 0; right: 0; }
 }
 
 .logos-row {
@@ -328,6 +422,16 @@ p strong { color: var(--text); font-weight: 600; }
   margin-bottom: 14px;
 }
 
+.page-header h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+  margin-top: 20px;
+}
+
 /* ========== Cards ========== */
 .card {
   background: var(--surface);
@@ -359,16 +463,17 @@ p strong { color: var(--text); font-weight: 600; }
 
 .step-badge {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--accent);
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED 60%, #6D28D9);
   color: #fff;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .steps-list li strong {
@@ -404,9 +509,9 @@ p strong { color: var(--text); font-weight: 600; }
 }
 
 .tool-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(124, 58, 237, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.14), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .tool-icon {
@@ -680,11 +785,28 @@ p strong { color: var(--text); font-weight: 600; }
 .conclusion {
   text-align: center;
   padding: 40px 0 20px;
+  position: relative;
 }
 
 .party {
-  font-size: 64px;
+  font-size: 68px;
   margin-bottom: 16px;
+  display: inline-block;
+  position: relative;
+}
+
+.party::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.22), rgba(124, 58, 237, 0.08) 40%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .conclusion h1 {
@@ -698,10 +820,12 @@ p strong { color: var(--text); font-weight: 600; }
 }
 
 .cta-card {
-  background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+  background:
+    radial-gradient(circle at 80% 10%, rgba(245, 158, 11, 0.18), transparent 50%),
+    linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
   color: #fff;
   border-radius: 24px;
-  padding: 48px 40px;
+  padding: 56px 44px;
   text-align: center;
   box-shadow: var(--shadow-lg);
   position: relative;
@@ -713,10 +837,31 @@ p strong { color: var(--text); font-weight: 600; }
   position: absolute;
   top: -60%;
   right: -20%;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, transparent 70%);
   pointer-events: none;
+  animation: ctaFloat 12s ease-in-out infinite;
+}
+
+.cta-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 280px;
+  height: 280px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.28) 1.2px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0.35;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at bottom left, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at bottom left, black 0%, transparent 70%);
+}
+
+@keyframes ctaFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-20px, 15px) scale(1.08); }
 }
 
 .cta-badge {
@@ -732,11 +877,16 @@ p strong { color: var(--text); font-weight: 600; }
 
 .cta-card h2 {
   color: #fff;
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 60, "opsz" 96;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-date {
@@ -811,4 +961,535 @@ p strong { color: var(--text); font-weight: 600; }
   h1 { font-size: 28px; }
   .lead { font-size: 16px; }
   .numbered-list > li { padding-left: 38px; }
+}
+
+/* ============================================================
+   BELT PROGRESSION
+   ============================================================ */
+.belt-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 4px 16px;
+  margin: -16px 0 36px;
+  background: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(229, 229, 229, 0.7);
+}
+
+.belt-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* ---- The belt visual (body + knot + tails) ---- */
+.belt-visual {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+  min-width: 180px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --belt-color: var(--belt-white);
+  --belt-shadow: #D4D4D4;
+  --belt-knot: #E2E0DA;
+  transition: --belt-color 0.7s ease, --belt-shadow 0.7s ease, --belt-knot 0.7s ease;
+}
+
+.belt-bar[data-level="0"] .belt-visual,
+.belt-visual[data-level="0"] {
+  --belt-color: #F5F4F0;
+  --belt-shadow: #C8C6C0;
+  --belt-knot: #E4E2DB;
+}
+.belt-bar[data-level="1"] .belt-visual,
+.belt-visual[data-level="1"] {
+  --belt-color: #2563EB;
+  --belt-shadow: #1E40AF;
+  --belt-knot: #1D4ED8;
+}
+.belt-bar[data-level="2"] .belt-visual,
+.belt-visual[data-level="2"] {
+  --belt-color: #7C3AED;
+  --belt-shadow: #5B21B6;
+  --belt-knot: #6D28D9;
+}
+.belt-bar[data-level="3"] .belt-visual,
+.belt-visual[data-level="3"] {
+  --belt-color: #1A1A1A;
+  --belt-shadow: #000;
+  --belt-knot: #0A0A0A;
+}
+
+.belt-body {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: var(--belt-color);
+  border: 1.5px solid var(--belt-shadow);
+  border-radius: 999px;
+  box-shadow: 0 2px 0 0 var(--belt-shadow),
+              0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.7s ease, border-color 0.7s ease, box-shadow 0.7s ease;
+  overflow: hidden;
+}
+
+.belt-shine {
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.belt-bar[data-level="3"] .belt-shine,
+.belt-visual[data-level="3"] .belt-shine {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+}
+
+.belt-knot {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 30px;
+  background: var(--belt-knot);
+  border: 1.5px solid var(--belt-shadow);
+  border-radius: 6px;
+  z-index: 2;
+  box-shadow: 0 2px 0 0 var(--belt-shadow),
+              0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.7s ease, border-color 0.7s ease, box-shadow 0.7s ease;
+}
+
+.belt-knot-shine {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  right: 5px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  border-radius: 999px;
+}
+
+.belt-bar[data-level="3"] .belt-knot-shine,
+.belt-visual[data-level="3"] .belt-knot-shine {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.belt-tail {
+  position: absolute;
+  top: 100%;
+  width: 8px;
+  height: 12px;
+  background: var(--belt-color);
+  border: 1.5px solid var(--belt-shadow);
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 2px 0 0 var(--belt-shadow);
+  transition: background-color 0.7s ease, border-color 0.7s ease, box-shadow 0.7s ease;
+}
+
+.belt-tail-l { left: 6px; }
+.belt-tail-r { right: 6px; }
+
+/* ---- Belt name + step dots ---- */
+.belt-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.belt-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "SOFT" 50, "opsz" 24;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  transition: color 0.5s ease;
+}
+
+.belt-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.belt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--belt-empty);
+  border: 1px solid var(--border);
+  transition: background-color 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+}
+
+.belt-bar[data-level="1"] .belt-dot[data-dot="1"],
+.belt-bar[data-level="2"] .belt-dot[data-dot="1"],
+.belt-bar[data-level="2"] .belt-dot[data-dot="2"],
+.belt-bar[data-level="3"] .belt-dot { background: var(--accent); border-color: var(--accent); }
+
+.belt-bar[data-level="3"] .belt-dot {
+  background: var(--belt-black);
+  border-color: var(--belt-black);
+  transform: scale(1.1);
+}
+
+/* Step complete button */
+.step-complete {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 22px 26px;
+  margin-top: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.step-complete:hover:not(.completed):not(.locked) {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(124, 58, 237, 0.12);
+}
+
+.step-complete-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-complete-icon i { width: 22px; height: 22px; }
+
+.step-complete-body { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.step-complete-body strong { font-size: 16px; font-weight: 700; color: var(--text); }
+.step-complete-body span { font-size: 14px; color: var(--text-muted); }
+.step-complete-body em { font-style: normal; color: var(--accent); font-weight: 600; }
+
+.step-complete-arrow {
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.step-complete-arrow i { width: 20px; height: 20px; }
+
+.step-complete:hover:not(.completed):not(.locked) .step-complete-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* Completed state */
+.step-complete.completed {
+  background: #F0FDF4;
+  border-color: #BBF7D0;
+  cursor: default;
+}
+.step-complete.completed:hover { transform: none; box-shadow: var(--shadow-sm); }
+.step-complete.completed .step-complete-icon { background: #DCFCE7; color: #15803D; }
+.step-complete.completed .step-complete-body em { color: #15803D; }
+.step-complete.completed .step-complete-arrow { display: none; }
+
+/* Locked state */
+.step-complete.locked {
+  background: #FAFAFA;
+  border-color: var(--border);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.step-complete.locked:hover { transform: none; box-shadow: var(--shadow-sm); border-color: var(--border); }
+.step-complete.locked .step-complete-icon { background: #F1F1F1; color: #A3A3A3; }
+.step-complete.locked .step-complete-body strong { color: var(--text-muted); }
+.step-complete.locked .step-complete-arrow { display: none; }
+
+/* ============================================================
+   CEREMONY OVERLAY
+   ============================================================ */
+.ceremony {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(250, 250, 250, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  pointer-events: none;
+}
+
+.ceremony.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ceremony-content {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50% + 90px);
+  transform: translate(-50%, 16px);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  padding: 0 24px;
+  max-width: 640px;
+  width: 100%;
+  transition: opacity 450ms ease, transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.ceremony.show-text .ceremony-content {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ceremony-dots-host {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 85px);
+  transform: translate(-50%, -12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 450ms ease 80ms, transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1) 80ms;
+}
+
+.ceremony.show-text .ceremony-dots-host {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Bigger dots for ceremonial feel */
+.ceremony-dots-host .belt-dot {
+  width: 14px;
+  height: 14px;
+  border-width: 1.5px;
+}
+
+.ceremony-dots-host[data-level="1"] .belt-dot[data-dot="1"],
+.ceremony-dots-host[data-level="2"] .belt-dot[data-dot="1"],
+.ceremony-dots-host[data-level="2"] .belt-dot[data-dot="2"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.ceremony-dots-host[data-level="3"] .belt-dot {
+  background: var(--belt-black);
+  border-color: var(--belt-black);
+  transform: scale(1.15);
+}
+
+.ceremony-sub-wrapper {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 135px);
+  transform: translate(-50%, -12px);
+  opacity: 0;
+  text-align: center;
+  pointer-events: none;
+  padding: 0 24px;
+  max-width: 560px;
+  width: 100%;
+  transition: opacity 450ms ease 160ms, transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1) 160ms;
+}
+
+.ceremony.show-text .ceremony-sub-wrapper {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.ceremony-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  background: linear-gradient(135deg, #F7F5FF, #EDE9FE);
+  padding: 7px 16px 7px 14px;
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.ceremony.final .ceremony-eyebrow {
+  color: #fff;
+  background: linear-gradient(135deg, #18181B, #0A0A0A);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ceremony-title {
+  display: block;
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 50, "opsz" 144;
+  font-weight: 500;
+  font-size: clamp(52px, 8.2vw, 96px);
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.ceremony.final .ceremony-title {
+  font-size: clamp(56px, 9vw, 108px);
+  background: linear-gradient(135deg, #0A0A0A 0%, #52525B 50%, #0A0A0A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ceremony-sub {
+  display: block;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  font-weight: 500;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.ceremony.final .ceremony-sub {
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 500;
+  max-width: 560px;
+}
+
+/* Flying clone — just the belt visual (body + knot + tails) */
+.ceremony-belt {
+  position: fixed;
+  z-index: 1001;
+  transform-origin: center center;
+  transition: transform 750ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  pointer-events: none;
+}
+
+/* Expanding ring effect */
+.ceremony-ring {
+  position: fixed;
+  z-index: 1002;
+  left: 50%;
+  top: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ceremony-ring.pulse {
+  animation: ceremonyRing 1000ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes ceremonyRing {
+  0%   { transform: translate(-50%, -50%) scale(0.2); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+}
+
+
+body.ceremony-lock { overflow: hidden; }
+
+/* Toast (reduced motion) */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  padding: 14px 24px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 2000;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.toast.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.ceremony.final .ceremony-ring {
+  border-color: #18181B;
+}
+
+.ceremony.final.active::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(24, 24, 27, 0.12), transparent 55%);
+  animation: ceremonyGlow 2.4s ease-out forwards;
+}
+
+@keyframes ceremonyGlow {
+  0%   { opacity: 0; }
+  40%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ceremony-belt { transition: none !important; }
+  .ceremony-ring { display: none; }
+  .ceremony { transition: opacity 0.2s ease !important; }
+  .belt-body, .belt-knot, .belt-tail, .belt-name, .belt-dot, .belt-visual { transition: none !important; }
+}
+
+@media (max-width: 768px) {
+  .belt-bar {
+    gap: 14px;
+    padding: 14px 0 16px;
+    margin: -8px 0 24px;
+    flex-wrap: wrap;
+  }
+  .belt-label { display: none; }
+  .belt-visual { max-width: none; min-width: 0; }
+  .belt-name { font-size: 15px; }
+  .belt-meta { gap: 10px; }
+  .step-complete { padding: 18px 20px; gap: 14px; }
+  .step-complete-icon { width: 40px; height: 40px; }
+  .ceremony-content { bottom: calc(50% + 70px); }
+  .ceremony-dots-host { top: calc(50% + 65px); gap: 12px; }
+  .ceremony-dots-host .belt-dot { width: 12px; height: 12px; }
+  .ceremony-sub-wrapper { top: calc(50% + 105px); }
 }

@@ -6,7 +6,7 @@
   <title>Aula Prática: Introdução à Meta-Análise — Black Belt Research</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,30..100&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -62,9 +62,41 @@
   <!-- Main content -->
   <main class="main">
 
+    <!-- ============ BELT PROGRESS BAR ============ -->
+    <div class="belt-bar" id="belt-bar" data-level="0">
+      <span class="belt-label">Sua faixa</span>
+      <div class="belt-visual">
+        <div class="belt-body">
+          <span class="belt-shine"></span>
+        </div>
+        <div class="belt-knot">
+          <span class="belt-knot-shine"></span>
+          <span class="belt-tail belt-tail-l"></span>
+          <span class="belt-tail belt-tail-r"></span>
+        </div>
+      </div>
+      <div class="belt-meta">
+        <span class="belt-name" id="belt-name">Faixa Branca</span>
+        <div class="belt-dots" aria-label="progresso de etapas">
+          <span class="belt-dot" data-dot="1"></span>
+          <span class="belt-dot" data-dot="2"></span>
+          <span class="belt-dot" data-dot="3"></span>
+        </div>
+      </div>
+    </div>
+
     <!-- ============ HOME ============ -->
     <section id="home" class="page">
       <div class="home-hero reveal">
+        <svg class="hero-ornament" width="84" height="84" viewBox="0 0 84 84" fill="none" aria-hidden="true">
+          <circle cx="6" cy="6" r="2.5" fill="currentColor"/>
+          <circle cx="24" cy="6" r="2.5" fill="currentColor" opacity="0.6"/>
+          <circle cx="42" cy="6" r="2.5" fill="currentColor" opacity="0.3"/>
+          <circle cx="6" cy="24" r="2.5" fill="currentColor" opacity="0.6"/>
+          <circle cx="24" cy="24" r="2.5" fill="currentColor" opacity="0.3"/>
+          <circle cx="6" cy="42" r="2.5" fill="currentColor" opacity="0.3"/>
+          <path d="M 50 12 Q 68 12, 70 30 T 78 60" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+        </svg>
         <div class="logos-row">
           <img src="assets/bb.png" alt="Black Belt Research" class="logo-bb" />
           <span class="partnership">em parceria com</span>
@@ -195,6 +227,15 @@
           <li>O Rayyan possui um sistema de inteligência artificial que sugere inclusões/exclusões — use como apoio, <strong>nunca como decisão final</strong>.</li>
         </ul>
       </div>
+
+      <button class="step-complete reveal" data-step="1">
+        <span class="step-complete-icon"><i data-lucide="circle"></i></span>
+        <span class="step-complete-body">
+          <strong>Marcar como concluído</strong>
+          <span>Você vai subir para <em>Faixa Azul</em></span>
+        </span>
+        <span class="step-complete-arrow"><i data-lucide="arrow-right"></i></span>
+      </button>
     </section>
 
     <!-- ============ EXTRAÇÃO ============ -->
@@ -292,6 +333,15 @@
           <li>Anote de onde você extraiu cada dado para garantir <strong>transparência e reprodutibilidade</strong>.</li>
         </ul>
       </div>
+
+      <button class="step-complete reveal" data-step="2">
+        <span class="step-complete-icon"><i data-lucide="circle"></i></span>
+        <span class="step-complete-body">
+          <strong>Marcar como concluído</strong>
+          <span>Você vai subir para <em>Faixa Roxa</em></span>
+        </span>
+        <span class="step-complete-arrow"><i data-lucide="arrow-right"></i></span>
+      </button>
     </section>
 
     <!-- ============ ANÁLISE ============ -->
@@ -368,13 +418,22 @@
           </li>
         </ul>
       </div>
+
+      <button class="step-complete reveal" data-step="3">
+        <span class="step-complete-icon"><i data-lucide="circle"></i></span>
+        <span class="step-complete-body">
+          <strong>Marcar como concluído</strong>
+          <span>Você vai subir para <em>Faixa Preta</em></span>
+        </span>
+        <span class="step-complete-arrow"><i data-lucide="arrow-right"></i></span>
+      </button>
     </section>
 
     <!-- ============ CONCLUSÃO ============ -->
     <section id="conclusao" class="page">
       <div class="conclusion reveal">
         <div class="party">🎉</div>
-        <h1>Parabéns por completar a aula prática!</h1>
+        <h1>Parabéns por completar a <mark>aula prática</mark>!</h1>
         <p class="lead">Esperamos que você tenha entendido um pouco mais sobre o universo da meta-análise. Hoje você passou pelas <strong>3 etapas fundamentais</strong>: screening, extração de dados e análise estatística com Forest Plot.</p>
         <p>Mas isso é apenas o começo! Uma revisão sistemática com meta-análise envolve muitas outras etapas: definição do protocolo, busca nas bases de dados, avaliação de risco de viés, análises de sensibilidade, GRADE, e muito mais.</p>
         <p><strong>Queremos continuar te ensinando todos esses passos!</strong></p>
@@ -392,6 +451,25 @@
     </section>
 
   </main>
+
+  <!-- ============ CEREMONY OVERLAY ============ -->
+  <div class="ceremony" id="ceremony" aria-hidden="true">
+    <div class="ceremony-content">
+      <span class="ceremony-eyebrow" id="ceremony-eyebrow">Promoção</span>
+      <span class="ceremony-title" id="ceremony-title">Faixa Azul</span>
+    </div>
+    <div class="ceremony-dots-host" id="ceremony-dots-host" data-level="0">
+      <span class="belt-dot" data-dot="1"></span>
+      <span class="belt-dot" data-dot="2"></span>
+      <span class="belt-dot" data-dot="3"></span>
+    </div>
+    <div class="ceremony-sub-wrapper">
+      <span class="ceremony-sub" id="ceremony-sub">Você completou a etapa de Screening.</span>
+    </div>
+  </div>
+
+  <!-- ============ TOAST (reduced motion) ============ -->
+  <div class="toast" id="toast" aria-hidden="true"></div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
