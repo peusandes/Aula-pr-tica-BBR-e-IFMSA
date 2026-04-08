@@ -3,58 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aula Prática — Introdução à Meta-Análise · Black Belt Research</title>
+  <title>Aula Prática: Introdução à Meta-Análise — Black Belt Research</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <!-- Mobile top bar -->
   <header class="mobile-bar">
-    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir sumário">Index</button>
-    <span class="mobile-brand">Black Belt <em>Research</em></span>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">
+      <i data-lucide="menu"></i>
+    </button>
+    <span class="mobile-brand">Black Belt Research</span>
   </header>
 
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-top">
-      <img src="assets/bb.png" alt="" class="sidebar-logo" />
+      <img src="assets/bb.png" alt="Black Belt Research" class="sidebar-logo" />
       <div class="sidebar-brand">
-        <span class="mark">Est. Dojo · MMXXV</span>
         <strong>Black Belt</strong>
-        <span class="sub">Research</span>
+        <span>Research</span>
       </div>
     </div>
 
-    <span class="contents-label">Sumário</span>
-
     <nav class="sidebar-nav">
       <a href="#home" class="nav-item" data-target="home">
-        <span class="roman">—</span>
-        <span class="label">Frontispício<small>Abertura</small></span>
+        <i data-lucide="home"></i>
+        <span>Início</span>
       </a>
       <a href="#screening" class="nav-item" data-target="screening">
-        <span class="roman">I.</span>
-        <span class="label">Screening<small>Etapa 01</small></span>
+        <span class="step-num">1</span>
+        <span>Screening</span>
       </a>
       <a href="#extracao" class="nav-item" data-target="extracao">
-        <span class="roman">II.</span>
-        <span class="label">Extração<small>Etapa 02</small></span>
+        <span class="step-num">2</span>
+        <span>Extração de Dados</span>
       </a>
       <a href="#analise" class="nav-item" data-target="analise">
-        <span class="roman">III.</span>
-        <span class="label">Forest Plot<small>Etapa 03</small></span>
+        <span class="step-num">3</span>
+        <span>Análise Estatística</span>
       </a>
       <a href="#conclusao" class="nav-item" data-target="conclusao">
-        <span class="roman">IV.</span>
-        <span class="label">Epílogo<small>Convite</small></span>
+        <i data-lucide="graduation-cap"></i>
+        <span>Conclusão</span>
       </a>
     </nav>
 
     <div class="sidebar-footer">
-      <span class="meta">em parceria com</span>
+      <span>em parceria com</span>
       <img src="assets/cc.png" alt="IFMSA Brazil Bahiana" />
     </div>
   </aside>
@@ -64,172 +62,167 @@
   <!-- Main content -->
   <main class="main">
 
-    <!-- ==================== FRONTISPÍCIO ==================== -->
+    <!-- ============ HOME ============ -->
     <section id="home" class="page">
-      <div class="home-hero">
+      <div class="home-hero reveal">
         <div class="logos-row">
           <img src="assets/bb.png" alt="Black Belt Research" class="logo-bb" />
           <span class="partnership">em parceria com</span>
           <img src="assets/cc.png" alt="IFMSA Brazil Bahiana" class="logo-cc" />
         </div>
-
-        <div class="hero-dateline">
-          <span>Volume 01 · Nº 01</span>
-          <span class="vol">Aula prática</span>
-          <span>MMXXV</span>
-        </div>
-
-        <h1>Introdução à<br><em>Meta-Análise</em>.</h1>
-        <p class="lead">Um guia prático em três tempos — screening, extração e análise — para quem quer começar a ler, respirar e construir revisões sistemáticas.</p>
+        <span class="eyebrow">Aula Prática</span>
+        <h1>Introdução à Meta-Análise</h1>
+        <p class="lead">Aprenda na prática as etapas essenciais de uma revisão sistemática com meta-análise.</p>
       </div>
 
-      <div class="plate plate-bordered reveal">
-        <span class="plate-label">§ Nota do editor</span>
-        <h2>Como esta aula funciona</h2>
-        <p class="dropcap">Nesta prática você atravessará as três etapas fundamentais de uma meta-análise. Cada etapa tem sua ferramenta, seu gesto e sua disciplina — siga na ordem para a melhor experiência. O menu ao lado serve como sumário: pule entre as seções conforme avança.</p>
-
+      <div class="card reveal">
+        <h2>Como vai funcionar</h2>
+        <p>Nesta aula prática, você vai passar por <strong>3 etapas fundamentais</strong> de uma meta-análise:</p>
         <ul class="steps-list">
           <li>
-            <span class="step-roman">I</span>
+            <span class="step-badge">1</span>
             <div>
               <strong>Screening</strong>
-              <p>Você aprenderá a triar artigos usando o <em>Rayyan</em>, uma ferramenta online de screening colaborativo.</p>
+              <p>Você aprenderá a triar artigos usando o Rayyan, uma ferramenta online de screening colaborativo.</p>
             </div>
           </li>
           <li>
-            <span class="step-roman">II</span>
+            <span class="step-badge">2</span>
             <div>
               <strong>Extração de Dados</strong>
               <p>Você vai extrair dados de um artigo real, preenchendo uma tabela de extração padronizada.</p>
             </div>
           </li>
           <li>
-            <span class="step-roman">III</span>
+            <span class="step-badge">3</span>
             <div>
               <strong>Análise Estatística</strong>
-              <p>Usando o <em>Review Manager</em> (RevMan), você vai desenhar seu primeiro Forest Plot.</p>
+              <p>Usando o Review Manager (RevMan), você vai criar um Forest Plot com os dados extraídos.</p>
             </div>
           </li>
         </ul>
+        <p class="muted">Navegue pelas etapas usando o menu lateral. Siga cada etapa na ordem para a melhor experiência!</p>
       </div>
 
-      <div class="reveal" style="margin-top: 80px;">
-        <span class="plate-label">§ Aparato necessário</span>
-        <h2 class="section-title">Ferramentas</h2>
-        <p class="section-sub">Antes de começar, você precisará de duas ferramentas gratuitas. Abra cada uma em uma nova aba e tenha à mão.</p>
-
+      <div class="reveal">
+        <h2 class="section-title">Ferramentas Necessárias</h2>
+        <p class="section-sub">Antes de começar, você precisará acessar ou baixar as seguintes ferramentas:</p>
         <div class="tool-grid">
           <a class="tool-card" href="https://rayyan.ai/users/sign_in" target="_blank" rel="noopener">
-            <span class="tool-num">Ferramenta 01</span>
-            <span class="tool-arrow">→</span>
-            <div class="tool-name"><em>Rayyan</em></div>
-            <p class="tool-desc">Crie sua conta ou faça login para o screening colaborativo de artigos.</p>
+            <div class="tool-icon"><i data-lucide="log-in"></i></div>
+            <div class="tool-body">
+              <strong>Acessar Rayyan</strong>
+              <p>Crie sua conta ou faça login para o screening de artigos.</p>
+            </div>
+            <i data-lucide="arrow-up-right" class="tool-arrow"></i>
           </a>
           <a class="tool-card" href="https://www.risetku.com/blog/revman" target="_blank" rel="noopener">
-            <span class="tool-num">Ferramenta 02</span>
-            <span class="tool-arrow">→</span>
-            <div class="tool-name">RevMan</div>
-            <p class="tool-desc">Baixe o Review Manager da Cochrane para a análise estatística final.</p>
+            <div class="tool-icon"><i data-lucide="download"></i></div>
+            <div class="tool-body">
+              <strong>Baixar RevMan</strong>
+              <p>Baixe o Review Manager para a análise estatística.</p>
+            </div>
+            <i data-lucide="arrow-up-right" class="tool-arrow"></i>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SCREENING ==================== -->
+    <!-- ============ SCREENING ============ -->
     <section id="screening" class="page">
-      <div class="marginalia reveal">
-        <span>Capítulo I · Etapa 01</span>
-        <span class="right">triagem de artigos</span>
-      </div>
-
       <div class="page-header reveal">
-        <h1>Screening<br>de <em>Artigos</em>.</h1>
-        <p class="lead">Aprenda a selecionar estudos relevantes para sua revisão sistemática — com método, rigor e discernimento.</p>
+        <span class="eyebrow">Etapa 1</span>
+        <h1>Screening de Artigos</h1>
+        <p class="lead">Aprenda a selecionar estudos relevantes para sua revisão sistemática.</p>
       </div>
 
       <div class="action-row reveal">
-        <a class="btn btn-primary" href="https://rayyan.ai/users/sign_in" target="_blank" rel="noopener">Acessar Rayyan</a>
-        <a class="btn btn-outline" href="assets/embase.ris" download>Baixar arquivo .RIS</a>
+        <a class="btn btn-primary" href="https://rayyan.ai/users/sign_in" target="_blank" rel="noopener">
+          <i data-lucide="external-link"></i> Acessar Rayyan
+        </a>
+        <a class="btn btn-outline" href="assets/embase.ris" download>
+          <i data-lucide="file-down"></i> Baixar arquivo .RIS
+        </a>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 01 · Definição</span>
-        <h2>O que é o screening?</h2>
-        <p class="dropcap">O screening é a etapa de triagem: avaliamos títulos e abstracts dos artigos encontrados na busca para decidir quais entram ou saem da revisão. É uma das etapas mais importantes — é aqui que a revisão começa a ganhar forma e que estudos relevantes são preservados ou perdidos.</p>
+      <div class="card reveal">
+        <h2>O que é o Screening?</h2>
+        <p>O screening é a etapa de triagem onde avaliamos títulos e abstracts dos artigos encontrados na busca para decidir quais serão incluídos ou excluídos da revisão.</p>
+        <p>É uma das etapas mais importantes da revisão sistemática, pois garante que apenas estudos relevantes avancem para a análise.</p>
       </div>
 
-      <div class="plate plate-bordered reveal">
-        <span class="plate-label">§ 02 · Princípios</span>
+      <div class="card reveal">
         <h2>Princípios de um bom screening</h2>
-        <p>Use a pergunta <strong>PICO</strong> como guia permanente:</p>
-
+        <p>Use a pergunta <strong>PICO</strong> como guia:</p>
         <ul class="pico-list">
-          <li><span class="pico-letter">P</span><div><strong>População</strong>Qual a população do estudo?</div></li>
-          <li><span class="pico-letter">I</span><div><strong>Intervenção</strong>Qual intervenção está sendo avaliada?</div></li>
-          <li><span class="pico-letter">C</span><div><strong>Comparação</strong>Com o que está sendo comparada?</div></li>
-          <li><span class="pico-letter">O</span><div><strong>Outcome</strong>Quais são os desfechos medidos?</div></li>
+          <li><span class="pico-letter">P</span><div><strong>População</strong> — Qual a população do estudo?</div></li>
+          <li><span class="pico-letter">I</span><div><strong>Intervenção</strong> — Qual intervenção está sendo avaliada?</div></li>
+          <li><span class="pico-letter">C</span><div><strong>Comparação</strong> — Com o que está sendo comparada?</div></li>
+          <li><span class="pico-letter">O</span><div><strong>Outcome / Desfecho</strong> — Quais são os desfechos medidos?</div></li>
         </ul>
-
         <ul class="bullet-list">
           <li>Sempre volte à sua pergunta de pesquisa antes de incluir ou excluir um artigo.</li>
-          <li>Na dúvida, <strong>inclua</strong> — é melhor avaliar o texto completo depois do que perder um estudo relevante.</li>
-          <li>O screening deve ser feito de forma independente por pelo menos <strong>dois revisores</strong>.</li>
+          <li>Na dúvida, <strong>inclua</strong> o artigo — é melhor avaliar o texto completo depois do que perder um estudo relevante.</li>
+          <li>O screening deve ser feito de forma independente por pelo menos <strong>2 revisores</strong>.</li>
           <li>Discordâncias devem ser resolvidas por consenso ou por um terceiro revisor.</li>
         </ul>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 03 · Manual de operação</span>
+      <div class="card reveal">
         <h2>Passo a passo no Rayyan</h2>
         <ol class="numbered-list">
           <li><strong>Crie sua conta</strong> no Rayyan acessando o link acima.</li>
           <li><strong>Crie um novo projeto</strong> (New Review) — dê um nome ao seu projeto.</li>
           <li><strong>Importe o arquivo .RIS</strong> — baixe o arquivo usando o botão acima e faça upload no Rayyan.</li>
-          <li><strong>Desduplicação</strong> — antes de iniciar o screening, faça a desduplicação dos artigos. Isso pode ser feito no próprio Rayyan (que detecta duplicatas automaticamente) ou previamente no Zotero.</li>
+          <li><strong>Desduplicação</strong> — antes de iniciar o screening, faça a desduplicação dos artigos. Isso pode ser feito diretamente no Rayyan (que detecta duplicatas automaticamente) ou previamente no Zotero (um gerenciador de referências gratuito).</li>
           <li><strong>Convide colaboradores</strong> — adicione outros revisores ao projeto para o screening independente.</li>
-          <li><strong>Inicie o screening</strong> — leia título e abstract e classifique cada artigo como <span class="tag tag-ok">Include</span> <span class="tag tag-no">Exclude</span> ou <span class="tag tag-maybe">Maybe</span>.</li>
-          <li><strong>Resolva conflitos</strong> — após todos os revisores finalizarem, resolva as discordâncias em consenso.</li>
+          <li><strong>Inicie o screening</strong> — leia título e abstract de cada artigo e classifique como:
+            <ul class="bullet-list">
+              <li><span class="tag tag-ok">✅ Include</span> — o estudo parece relevante para a pergunta PICO.</li>
+              <li><span class="tag tag-no">❌ Exclude</span> — o estudo claramente não atende aos critérios.</li>
+              <li><span class="tag tag-maybe">❓ Maybe</span> — na dúvida, marque como "maybe" para revisão posterior.</li>
+            </ul>
+          </li>
+          <li><strong>Resolva conflitos</strong> — após todos os revisores finalizarem, resolva as discordâncias.</li>
         </ol>
       </div>
 
-      <div class="plate plate-bordered reveal">
-        <span class="plate-label">§ 04 · Notas de margem</span>
-        <h2>Dicas importantes</h2>
+      <div class="card card-tip reveal">
+        <h2><i data-lucide="lightbulb"></i> Dicas importantes</h2>
         <ul class="bullet-list">
           <li>Use <strong>rótulos (labels)</strong> no Rayyan para marcar os motivos de exclusão.</li>
           <li>Filtre por palavras-chave para agilizar o processo.</li>
-          <li>O Rayyan possui um sistema de inteligência artificial que sugere inclusões — use como apoio, <strong>nunca como decisão final</strong>.</li>
+          <li>O Rayyan possui um sistema de inteligência artificial que sugere inclusões/exclusões — use como apoio, <strong>nunca como decisão final</strong>.</li>
         </ul>
       </div>
     </section>
 
-    <!-- ==================== EXTRAÇÃO ==================== -->
+    <!-- ============ EXTRAÇÃO ============ -->
     <section id="extracao" class="page">
-      <div class="marginalia reveal">
-        <span>Capítulo II · Etapa 02</span>
-        <span class="right">do texto aos números</span>
-      </div>
-
       <div class="page-header reveal">
-        <h1>Extração<br>de <em>Dados</em>.</h1>
-        <p class="lead">Aprenda a ler um artigo com olhos de estatística — extrair o que importa, ignorar o resto, preservar a trilha.</p>
+        <span class="eyebrow">Etapa 2</span>
+        <h1>Extração de Dados</h1>
+        <p class="lead">Aprenda a extrair informações-chave dos estudos incluídos.</p>
       </div>
 
       <div class="action-row reveal">
-        <a class="btn btn-primary" href="assets/singla-2015.pdf" download>Baixar artigo (Singla 2015)</a>
-        <a class="btn btn-outline" href="assets/tabela-extracao.xlsx" download>Baixar tabela de extração</a>
+        <a class="btn btn-primary" href="assets/singla-2015.pdf" download>
+          <i data-lucide="file-text"></i> Baixar artigo (Singla 2015)
+        </a>
+        <a class="btn btn-outline" href="assets/tabela-extracao.xlsx" download>
+          <i data-lucide="table"></i> Baixar Tabela de Extração
+        </a>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 01 · Definição</span>
-        <h2>O que é a extração de dados?</h2>
-        <p class="dropcap">Após o screening, os artigos incluídos passam pela extração de dados — o processo de coletar sistematicamente as informações relevantes de cada estudo. Usamos uma tabela de extração padronizada para garantir que todos os revisores extraiam as mesmas informações de forma consistente.</p>
+      <div class="card reveal">
+        <h2>O que é a Extração de Dados?</h2>
+        <p>Após o screening, os artigos incluídos passam pela <strong>extração de dados</strong> — o processo de coletar sistematicamente as informações relevantes de cada estudo.</p>
+        <p>Usamos uma <strong>tabela de extração padronizada</strong> para garantir que todos os revisores extraiam as mesmas informações de forma consistente.</p>
       </div>
 
-      <div class="plate plate-bordered reveal">
-        <span class="plate-label">§ 02 · Características basais</span>
-        <h2>A Tabela 1 do artigo</h2>
-        <p>A <strong>Tabela 1</strong> de um artigo científico geralmente contém as <em>baseline characteristics</em> (características basais) dos participantes. Nela você encontrará:</p>
+      <div class="card reveal">
+        <h2>Extração das Características Basais (Tabela 1)</h2>
+        <p>A <strong>Tabela 1</strong> de um artigo científico geralmente contém as <em>baseline characteristics</em> (características basais) dos participantes do estudo. Nela você encontrará informações como:</p>
         <ul class="bullet-list">
           <li>Nome do autor e ano de publicação</li>
           <li>Tipo de estudo (RCT, coorte, caso-controle, etc.)</li>
@@ -238,115 +231,127 @@
           <li>Distribuição por sexo</li>
           <li>Outras características demográficas e clínicas relevantes</li>
         </ul>
-        <p><strong>Como encontrar.</strong> Procure a seção "Results" do artigo e localize a "Table 1" ou "Baseline characteristics". Depois, preencha a tabela de extração com essas informações.</p>
+        <p><strong>Como encontrar:</strong> Procure a seção "Results" do artigo e localize a "Table 1" ou "Baseline characteristics". Depois, preencha a tabela de extração com essas informações.</p>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 03 · Os desfechos</span>
-        <h2>Extração dos outcomes</h2>
-        <p>Além das características basais, precisamos extrair os dados dos <strong>desfechos (outcomes)</strong> para a análise estatística. No nosso exemplo prático, vamos usar o estudo <em>Singla et al. (2015)</em>, que avalia o manejo de aneurismas infecciosos intracranianos.</p>
+      <div class="card reveal">
+        <h2>Extração dos Desfechos (Outcomes)</h2>
+        <p>Além das características basais, precisamos extrair os dados dos <strong>desfechos (outcomes)</strong> para a análise estatística.</p>
+        <p>No nosso exemplo prático, vamos usar o estudo <strong>Singla et al. (2015)</strong>, que avalia o manejo de aneurismas infecciosos intracranianos.</p>
 
         <div class="highlight-box">
-          <strong>No exercício de hoje</strong>
+          <strong>No exercício de hoje:</strong>
           <ul class="bullet-list">
             <li>Nosso desfecho de interesse é a <strong>mortalidade</strong>.</li>
-            <li><strong>Grupo exposição</strong> (tratamento cirúrgico — <em>clipping/embolization</em>): pacientes submetidos a clipping ou embolização.</li>
-            <li><strong>Grupo controle</strong> (tratamento conservador — <em>no treatment</em>): pacientes que não receberam tratamento neurocirúrgico.</li>
-            <li><strong>O que extrair:</strong> N do evento (mortes) e N total em cada grupo.</li>
+            <li>O estudo compara:
+              <ul class="bullet-list">
+                <li><strong>Grupo exposição</strong> (tratamento cirúrgico — <em>clipping/embolization</em>): pacientes submetidos a clipping ou embolização.</li>
+                <li><strong>Grupo controle</strong> (tratamento conservador — <em>no treatment</em>): pacientes que não receberam tratamento neurocirúrgico.</li>
+              </ul>
+            </li>
+            <li><strong>O que extrair:</strong>
+              <ul class="bullet-list">
+                <li>N do evento (número de mortes) em cada grupo</li>
+                <li>N total (número total de pacientes) em cada grupo</li>
+              </ul>
+            </li>
           </ul>
         </div>
 
-        <p>Esses dados serão usados na próxima etapa para construir o Forest Plot no Review Manager.</p>
+        <p>Esses dados (eventos e totais por grupo) serão usados na próxima etapa para construir o Forest Plot no Review Manager.</p>
 
-        <figure class="figure">
-          <span class="figure-label">Fig. 01 · Tabela de desfecho a preencher</span>
-          <table class="mini-table">
-            <thead>
-              <tr>
-                <th>Grupo</th>
-                <th>Eventos (mortes)</th>
-                <th>N total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Clipping / embolization</td>
-                <td>?</td>
-                <td>?</td>
-              </tr>
-              <tr>
-                <td>No treatment</td>
-                <td>?</td>
-                <td>?</td>
-              </tr>
-            </tbody>
-          </table>
-          <figcaption class="figure-caption">Encontre esses valores no artigo de Singla 2015 e preencha sua tabela de extração.</figcaption>
-        </figure>
+        <table class="mini-table">
+          <thead>
+            <tr>
+              <th>Grupo</th>
+              <th>Eventos (mortes)</th>
+              <th>N total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Clipping / Embolization</td>
+              <td>?</td>
+              <td>?</td>
+            </tr>
+            <tr>
+              <td>No treatment</td>
+              <td>?</td>
+              <td>?</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted center">Encontre esses valores no artigo de Singla 2015 e preencha sua tabela de extração!</p>
       </div>
 
-      <div class="plate plate-bordered reveal">
-        <span class="plate-label">§ 04 · Notas de margem</span>
-        <h2>Dicas</h2>
+      <div class="card card-tip reveal">
+        <h2><i data-lucide="lightbulb"></i> Dicas</h2>
         <ul class="bullet-list">
           <li>Leia atentamente a seção de <strong>Resultados</strong> e as <strong>Tabelas</strong> do artigo.</li>
           <li>Procure especificamente por dados de <em>mortality</em> comparando os grupos.</li>
-          <li>Anote de onde extraiu cada dado para garantir <strong>transparência e reprodutibilidade</strong>.</li>
+          <li>Anote de onde você extraiu cada dado para garantir <strong>transparência e reprodutibilidade</strong>.</li>
         </ul>
       </div>
     </section>
 
-    <!-- ==================== ANÁLISE ==================== -->
+    <!-- ============ ANÁLISE ============ -->
     <section id="analise" class="page">
-      <div class="marginalia reveal">
-        <span>Capítulo III · Etapa 03</span>
-        <span class="right">a floresta estatística</span>
-      </div>
-
       <div class="page-header reveal">
-        <h1>Forest<br><em>Plot</em>.</h1>
-        <p class="lead">Transforme os números extraídos em um gráfico que resume, visualmente, a força e a direção da evidência.</p>
+        <span class="eyebrow">Etapa 3</span>
+        <h1>Análise Estatística — Forest Plot</h1>
+        <p class="lead">Use o Review Manager para criar seu primeiro Forest Plot.</p>
       </div>
 
       <div class="action-row reveal">
-        <a class="btn btn-primary" href="https://www.risetku.com/blog/revman" target="_blank" rel="noopener">Baixar RevMan</a>
+        <a class="btn btn-primary" href="https://www.risetku.com/blog/revman" target="_blank" rel="noopener">
+          <i data-lucide="download"></i> Baixar RevMan
+        </a>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 01 · Definição</span>
+      <div class="card reveal">
         <h2>O que é um Forest Plot?</h2>
-        <p class="dropcap">O Forest Plot é a representação gráfica clássica de uma meta-análise. Ele mostra visualmente o efeito de cada estudo individual e o efeito combinado de todos eles — o <em>pooled effect</em>.</p>
         <ul class="bullet-list">
+          <li>O <strong>Forest Plot</strong> é a representação gráfica clássica de uma meta-análise.</li>
+          <li>Ele mostra visualmente o efeito de cada estudo individual e o <strong>efeito combinado</strong> (pooled effect).</li>
           <li>Cada estudo é representado por um <strong>quadrado</strong> (cujo tamanho reflete o peso do estudo) e uma <strong>linha horizontal</strong> (intervalo de confiança).</li>
           <li>O <strong>losango</strong> na parte inferior representa o efeito combinado de todos os estudos.</li>
         </ul>
       </div>
 
-      <div class="plate plate-bordered reveal">
-        <span class="plate-label">§ 02 · O exercício</span>
+      <div class="card reveal">
         <h2>O que vamos fazer agora</h2>
         <ul class="bullet-list">
-          <li>Vamos usar o <strong>Review Manager</strong> — o software oficial da Cochrane para revisões sistemáticas.</li>
+          <li>Vamos usar o <strong>Review Manager (RevMan)</strong> — o software oficial da Cochrane para revisões sistemáticas.</li>
           <li>Utilizaremos os dados de mortalidade que você extraiu na etapa anterior (Singla 2015) para criar um Forest Plot.</li>
-          <li>Este é um exercício simplificado com apenas um estudo — em uma meta-análise real, teríamos múltiplos.</li>
+          <li>Este é um exercício simplificado com apenas um estudo para que você entenda a mecânica — em uma meta-análise real, teríamos múltiplos estudos.</li>
         </ul>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 03 · Manual de operação</span>
+      <div class="card reveal">
         <h2>Passo a passo no RevMan</h2>
         <ol class="numbered-list">
           <li><strong>Abra o RevMan</strong> que você baixou anteriormente.</li>
           <li><strong>Crie um novo projeto</strong> de revisão.</li>
           <li><strong>Adicione um desfecho</strong> — selecione <em>dichotomous outcome</em>, pois estamos analisando mortalidade (evento: sim/não).</li>
-          <li><strong>Insira os dados extraídos:</strong> nome do estudo (Singla 2015), grupo experimental (N evento + N total) e grupo controle (N evento + N total).</li>
-          <li><strong>Gere o Forest Plot</strong> — o RevMan calculará automaticamente o Risk Ratio, o intervalo de confiança e desenhará o gráfico.</li>
-          <li><strong>Interprete o resultado.</strong> Efeito à esquerda da linha de nulidade favorece o experimental; à direita, favorece o controle; se o IC cruza a linha de nulidade, o resultado não é estatisticamente significativo.</li>
+          <li><strong>Insira os dados</strong> que você extraiu:
+            <ul class="bullet-list">
+              <li>Nome do estudo: <strong>Singla 2015</strong></li>
+              <li>Grupo experimental (Clipping/Embolization): N do evento e N total</li>
+              <li>Grupo controle (No treatment): N do evento e N total</li>
+            </ul>
+          </li>
+          <li><strong>Gere o Forest Plot</strong> — o RevMan calculará automaticamente o Risk Ratio (ou Odds Ratio), o intervalo de confiança e gerará o gráfico.</li>
+          <li><strong>Interprete o resultado:</strong>
+            <ul class="bullet-list">
+              <li>Se o efeito estiver à <strong>esquerda</strong> da linha de nulidade (1 para RR/OR) → favorece o grupo experimental.</li>
+              <li>Se estiver à <strong>direita</strong> → favorece o grupo controle.</li>
+              <li>Se o intervalo de confiança <strong>cruzar a linha de nulidade</strong> → resultado não é estatisticamente significativo.</li>
+            </ul>
+          </li>
         </ol>
       </div>
 
-      <div class="plate reveal">
-        <span class="plate-label">§ 04 · Glossário</span>
+      <div class="card reveal">
         <h2>Conceitos-chave</h2>
         <ul class="concept-list">
           <li>
@@ -355,44 +360,40 @@
           </li>
           <li>
             <strong>Peso do estudo</strong>
-            <p>Em meta-análises com múltiplos estudos, cada um contribui proporcionalmente ao seu tamanho amostral e à sua precisão.</p>
+            <p>Em meta-análises com múltiplos estudos, cada estudo contribui proporcionalmente ao seu tamanho amostral e precisão.</p>
           </li>
           <li>
-            <strong>Efeito fixo vs. aleatório</strong>
+            <strong>Efeito fixo vs. efeito aleatório</strong>
             <p>Dois modelos estatísticos para combinar resultados — o modelo de efeito aleatório é mais conservador e geralmente preferido quando há heterogeneidade.</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- ==================== EPÍLOGO ==================== -->
+    <!-- ============ CONCLUSÃO ============ -->
     <section id="conclusao" class="page">
-      <div class="marginalia reveal">
-        <span>Capítulo IV · Epílogo</span>
-        <span class="right">até breve</span>
-      </div>
-
       <div class="conclusion reveal">
-        <div class="conclusion-ornament">⁂</div>
-        <h1>Parabéns por chegar ao <em>fim</em>.</h1>
-        <p>Esperamos que você tenha entendido um pouco mais sobre o universo da meta-análise. Hoje você passou pelas três etapas fundamentais: screening, extração de dados e análise estatística com Forest Plot.</p>
-        <p>Mas isto é apenas o começo. Uma revisão sistemática envolve muitas outras etapas — protocolo, busca em bases, avaliação de risco de viés, análises de sensibilidade, GRADE. E queremos continuar te ensinando cada uma delas.</p>
+        <div class="party">🎉</div>
+        <h1>Parabéns por completar a aula prática!</h1>
+        <p class="lead">Esperamos que você tenha entendido um pouco mais sobre o universo da meta-análise. Hoje você passou pelas <strong>3 etapas fundamentais</strong>: screening, extração de dados e análise estatística com Forest Plot.</p>
+        <p>Mas isso é apenas o começo! Uma revisão sistemática com meta-análise envolve muitas outras etapas: definição do protocolo, busca nas bases de dados, avaliação de risco de viés, análises de sensibilidade, GRADE, e muito mais.</p>
+        <p><strong>Queremos continuar te ensinando todos esses passos!</strong></p>
       </div>
 
       <div class="cta-card reveal">
-        <div class="cta-rule">
-          <span>Masterclass · Ao vivo</span>
-          <span>Inscrições abertas</span>
-        </div>
-        <div class="cta-date">20 de abril</div>
-        <h2>Destrave a<br><em>Pesquisa Científica</em>.</h2>
-        <p>Aprenda o passo a passo completo para conduzir sua própria revisão sistemática e meta-análise — do protocolo ao Forest Plot final.</p>
-        <a class="btn-cta" href="https://blackbeltresearch.com.br" target="_blank" rel="noopener">Quero me inscrever</a>
+        <div class="cta-badge">🎯 Masterclass</div>
+        <h2>Destrave a Pesquisa Científica</h2>
+        <div class="cta-date"><i data-lucide="calendar"></i> 20 de abril</div>
+        <p>Aprenda o passo a passo completo para conduzir sua própria revisão sistemática e meta-análise.</p>
+        <a class="btn btn-cta" href="https://blackbeltresearch.com.br" target="_blank" rel="noopener">
+          🚀 Quero me inscrever!
+        </a>
       </div>
     </section>
 
   </main>
 
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
 </body>
 </html>
